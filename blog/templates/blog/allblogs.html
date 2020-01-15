@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en">
+{% load staticfiles %}
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 		<meta name="generator" content="Jekyll v3.8.6">
-		<title>Album example · Bootstrap</title>
+		<title>Fake Blog</title>
 		<link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 		<!-- Bootstrap core CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -38,15 +39,15 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<a class="navbar-brand" href="#">James Ryan</a>
+				<a class="navbar-brand" href="{% url 'home' %}">James Ryan</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav ml-auto">
-						<a class="nav-item nav-link" href="#">Twitter</a>
-						<a class="nav-item nav-link" href="#">Resume</a>
-						<a class="nav-item nav-link active" href="#">Blog</a>
+						<a class="nav-item nav-link" href="http://bbc.co.uk/news">BBC News</a>
+						<a class="nav-item nav-link" href="{% static 'First-Name.pdf' %}">Resume</a>
+						<a class="nav-item nav-link active" href="{% url 'allblogs'%}">Blog</a>
 					</div>
 				</div>
 			</nav>
@@ -59,7 +60,7 @@
 				<hr />
 				<div>
 					{% for blog in blogs %}
-					<a href=""><h3 class="mb-0">{{ blog.title}}</h3></a>
+					<a href="{% url 'detail' blog.id %}"><h3 class="mb-0">{{ blog.title}}</h3></a>
 					<div class="mb-1 text-muted">{{ blog.pub_date_pretty }}</div>
 					<img class="img-fluid" src="{{ blog.image.url }}" height="100" width="200" />
 					<p>{{ blog.summary }}...</p>
